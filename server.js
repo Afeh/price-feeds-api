@@ -4,7 +4,7 @@ import app from "./app.js";
 import connectDB from "./src/config/db.js";
 
 import { feedSyncWorker } from './src/workers/feedSync.worker.js';
-// const { priceMonitorWorker } = require('./src/workers/priceMonitor.worker');
+import { priceMonitorWorker } from './src/workers/priceMonitor.worker.js';
 
 const PORT = process.env.PORT || 5000;
 
@@ -13,7 +13,7 @@ const PORT = process.env.PORT || 5000;
 
 	// Boot background workers
 	feedSyncWorker.start();
-	// priceMonitorWorker.start();
+	priceMonitorWorker.start();
 
 	app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 })();
