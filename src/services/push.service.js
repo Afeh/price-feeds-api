@@ -10,7 +10,7 @@ webpush.setVapidDetails(
  * Send a push notification to a single subscription.
  * Returns true on success, false on failure (expired/invalid sub).
  */
-const sendPush = async (subscription, payload) => {
+export const sendPush = async (subscription, payload) => {
 	try {
 		await webpush.sendNotification(
 			{
@@ -37,7 +37,7 @@ const sendPush = async (subscription, payload) => {
  * Broadcast to multiple subscriptions, auto-clean expired ones.
  * Returns count of successful sends.
  */
-const broadcast = async (subscriptions, payload, onExpired) => {
+export const broadcast = async (subscriptions, payload, onExpired) => {
 	let sent = 0;
 	await Promise.allSettled(
 		subscriptions.map(async (sub) => {
@@ -51,4 +51,4 @@ const broadcast = async (subscriptions, payload, onExpired) => {
 	return sent;
 };
 
-module.exports = { sendPush, broadcast };
+
