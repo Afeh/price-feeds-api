@@ -117,4 +117,4 @@ const priceMonitorWorker = {
 };
 
 
-export default priceMonitorWorker;
+export { priceMonitorWorker };

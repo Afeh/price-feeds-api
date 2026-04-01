@@ -30,7 +30,7 @@ const calcConfRatio = (parsedFeed) => {
 	return conf / price;
 };
 
-export default {
+export {
 	getLatestPrices,
 	calcConfRatio
 };

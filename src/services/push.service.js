@@ -1,7 +1,9 @@
+import dotenv from 'dotenv';
+dotenv.config()
 import webpush from "web-push";
 
 webpush.setVapidDetails(
-	process.env.VAPID_EMAIL,
+	process.env.VAPID_SUBJECT,
 	process.env.VAPID_PUBLIC_KEY,
 	process.env.VAPID_PRIVATE_KEY,
 );
@@ -37,7 +39,7 @@ export const sendPush = async (subscription, payload) => {
  * Broadcast to multiple subscriptions, auto-clean expired ones.
  * Returns count of successful sends.
  */
-export const broadcast = async (subscriptions, payload, onExpired) => {
+const broadcast = async (subscriptions, payload, onExpired) => {
 	let sent = 0;
 	await Promise.allSettled(
 		subscriptions.map(async (sub) => {
@@ -52,3 +54,4 @@ export const broadcast = async (subscriptions, payload, onExpired) => {
 };
 
 
+export default broadcast;
