@@ -13,7 +13,7 @@ import notifRoutes from "./src/routes/notifications.routes.js";
 const app = express();
 
 app.use(helmet());
-// app.use(cors());
+app.use(cors());
 app.use(morgan("dev"));
 app.use(express.json());
 app.use(cookieParser());
