@@ -12,8 +12,13 @@ import notifRoutes from "./src/routes/notifications.routes.js";
 
 const app = express();
 
+app.use(
+	cors({
+		origin: true, // This reflects the request origin, essentially allowing any single origin while still supporting credentials
+		credentials: true,
+	}),
+);
 app.use(helmet());
-app.use(cors());
 app.use(morgan("dev"));
 app.use(express.json());
 app.use(cookieParser());
